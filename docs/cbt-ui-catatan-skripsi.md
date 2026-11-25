@@ -230,3 +230,19 @@ npm run dev -- --host 127.0.0.1
 - [Rencana implementasi peserta](superpowers/plans/2026-11-25-cbt-web-ui-peserta.md) dan [rencana implementasi instruktur](superpowers/plans/2026-11-25-cbt-web-ui-instruktur.md).
 - [README frontend](../README.md) — petunjuk pengembangan umum.
 - [Bukti verifikasi](bukti-verifikasi-cbt-ui.md) — laporan lengkap uji, build, dan skenario browser.
+
+## 8. Lampiran tampilan
+
+Tampilan berikut diambil dari uji menyeluruh dengan `agent-browser` (browser terlihat, viewport 1440×900) pada 26 November 2026.
+
+| Layar | Bukti |
+|---|---|
+| Daftar ujian peserta | ![Daftar ujian peserta](screenshots/01-daftar-peserta.png) |
+| Pengerjaan dengan indikator tersimpan | ![Pengerjaan dan autosave](screenshots/02-pengerjaan-autosave.png) |
+| Konfirmasi sebelum mengerjakan | ![Konfirmasi ujian](screenshots/03-konfirmasi.png) |
+| Daftar ujian instruktur | ![Daftar ujian instruktur](screenshots/04-daftar-dosen.png) |
+| Validasi total bobot | ![Validasi bobot](screenshots/05-validasi-bobot.png) |
+| Editor setelah publikasi (read-only) | ![Editor read-only](screenshots/06-editor-publikasi-readonly.png) |
+| Editor soal | ![Editor soal](screenshots/07-editor-soal.png) |
+| Riwayat proktor | ![Riwayat proktor](screenshots/09-riwayat-proktor.png) |
+| Penilaian manual | ![Penilaian manual](screenshots/10-penilaian.png) |
