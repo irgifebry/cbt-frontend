@@ -92,7 +92,7 @@ Sumber status: [matriks kebutuhan CBT](cbt-requirements-matrix.md) dan [catatan 
 
 ## 5. Bukti verifikasi
 
-Bukti berikut dirangkum dari laporan `final-fix-report.md` (dalam direktori `.superpowers/sdd/2026-11-25-cbt-web-ui-instruktur/` di root workspace), yang mencatat hasil setelah komit `576831f`. Perintah dijalankan dari root worktree `lms-frontend-cbt-ui`.
+Bukti berikut dirangkum dari [bukti verifikasi](bukti-verifikasi-cbt-ui.md) dalam repositori ini, yang mencatat hasil setelah perbaikan akhir. Perintah dijalankan dari worktree asal sebelum repositori `cbt-frontend` dibuat.
 
 ### 1. Seluruh uji murni CBT — 22/22 lulus
 
@@ -135,6 +135,28 @@ Skrip puppeteer sementara dijalankan dengan `node .cbt-final-fix-browser.mjs` da
 4. **Nilai kosong ditolak:** klik **Simpan nilai** pada kolom kosong → validasi "Nilai harus diisi dengan angka.", `saveGrade` tidak dipanggil, tidak ada klaim tersimpan; setelah diisi `85`, tepat satu panggilan `saveGrade` dengan `nilai: 85`; lulus.
 
 Ringkasan laporan: `SEMUA SKENARIO BROWSER LULUS`.
+
+### 5. Uji menyeluruh memakai Orca CLI — 26 November 2026
+
+Pengujian dijalankan pada repositori `cbt-frontend` dengan terminal dan browser bawaan Orca (`orca terminal`, `orca tab`, `orca goto`, `orca snapshot`, `orca click`, `orca fill`, `orca eval`, `orca console`, `orca screenshot`). Dev server dijalankan di `http://127.0.0.1:5180/`; karena cache npm lokal menolak penulisan (`EACCES`), `node_modules` dipakai ulang dari worktree `lms-frontend` melalui symlink. Ini hanya penyesuaian lingkungan, bukan perubahan kode.
+
+Hasil pengujian antarmuka secara menyeluruh:
+
+| Alur | Tindakan di browser Orca | Hasil |
+|---|---|---|
+| Peserta — daftar | `/cbt` menampilkan attempt `berjalan` dan `selesai` | Lulus |
+| Peserta — pengerjaan | Klik **Kerjakan** → **Mulai** → pilih jawaban soal 1 | Status berubah `Menyimpan…` lalu `Tersimpan` |
+| Peserta — pengumpulan | Isi esai soal 2 lalu langsung klik **Kumpulkan** | "Jawaban berhasil dikumpulkan." — flush autosave bekerja |
+| Peserta — konfirmasi | Buka `/cbt/attempt/attempt-2/konfirmasi` | Petunjuk dan tombol lanjut tampil |
+| Instruktur — bobot | Total 101 → simpan; lalu `-10 + 110` → simpan | Berturut-turut ditolak: "Total bobot tidak boleh lebih dari 100" dan "Bobot tidak boleh negatif" |
+| Instruktur — ujian baru | Total 60 + 40 → simpan | Halaman editor `asesmen-3` terbuka; tombol simpan dinonaktifkan untuk ujian yang sudah ada |
+| Instruktur — soal | Simpan dua soal berturut-turut | Dua UUID berbeda di toast, tanpa teks `undefined` |
+| Instruktur — publikasi | Klik **Publikasikan ujian** | Banner read-only tampil dan semua input disabled |
+| Instruktur — monitoring | Buka halaman pemantauan attempt | Daftar pengerjaan tampil; riwayat proktor tanpa label kecurangan |
+| Instruktur — penilaian | Simpan nilai kosong, lalu isi `85` | Validasi "Nilai harus diisi dengan angka."; setelah diisi, "Nilai tersimpan." |
+| Otorisasi | Hapus token, buka `/dosen/cbt/ujian` | Dialihkan ke `/login` |
+
+`orca console` tidak melaporkan error. Screenshot dibuat untuk halaman penilaian instruktur dan daftar ujian peserta. Batas yang teramati: membuka halaman dengan navigasi penuh (`goto`) menghilangkan state mock dalam memori, sehingga ujian yang baru dibuat tidak ditemukan — perilaku ini sudah tercantum dalam bagian Keterbatasan dan bukan bug penyimpanan server.
 
 ### Catatan pengambilan bukti
 
