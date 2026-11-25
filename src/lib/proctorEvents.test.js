@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { toProctorEvent } from './proctorEvents.js';
+import { toProctorEvent, labelPeristiwaProctor } from './proctorEvents.js';
 
 test('memetakan tiga peristiwa yang dikenal', () => {
   const waktu = '2026-11-25T10:00:00.000Z';
@@ -12,4 +12,11 @@ test('memetakan tiga peristiwa yang dikenal', () => {
 test('peristiwa lain diabaikan', () => {
   assert.equal(toProctorEvent({ type: 'visibilitychange', hidden: false }), null);
   assert.equal(toProctorEvent({ type: 'unknown' }), null);
+});
+
+test('label tampilan peristiwa berbahasa Indonesia', () => {
+  assert.equal(labelPeristiwaProctor('tab_hidden'), 'Halaman tidak terlihat');
+  assert.equal(labelPeristiwaProctor('fullscreen_exit'), 'Keluar dari layar penuh');
+  assert.equal(labelPeristiwaProctor('window_blur'), 'Fokus jendela hilang');
+  assert.equal(labelPeristiwaProctor('tipe_baru'), 'tipe_baru');
 });

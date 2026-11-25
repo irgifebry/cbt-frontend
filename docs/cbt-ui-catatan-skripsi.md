@@ -178,21 +178,31 @@ Pengujian ulang dilakukan dengan `agent-browser` (sesi terisolasi `cbt-e2e-*`) t
 
 Console hanya mencatat error `Gagal mengambil data profil` dari layout LMS yang sudah ada karena backend LMS tidak dijalankan dalam pengujian ini; tidak ada error yang berasal dari fitur CBT.
 
+### Tindak lanjut temuan uji (26 November 2026)
+
+Tiga temuan di atas diperbaiki tanpa menunggu keputusan pembimbing karena semuanya berada di lapisan mock dan label tampilan, bukan aturan bisnis Q01–Q12:
+
+1. **`saveAnswer` kini menyimpan jawaban ke state contoh.** `getAttempt` mengembalikan `jawabanTersimpan` yang benar-benar terisi. Status "Tersimpan" tetap hanya diberikan setelah adapter merespons; tidak ada retry otomatis atau aturan penilaian baru.
+2. **Riwayat proktor memakai label Bahasa Indonesia.** `tab_hidden` → "Halaman tidak terlihat", `fullscreen_exit` → "Keluar dari layar penuh", `window_blur` → "Fokus jendela hilang". Ini hanya terjemahan kode event; jenis event wajib dan konsekuensinya tetap menunggu Q08/Q09.
+3. **State mock bertahan saat reload** lewat `sessionStorage` (kunci `cbt-mock-state-v1`), termasuk jawaban, event proctor, dan status attempt yang sudah dikumpulkan.
+
+Error `Gagal mengambil data profil` **tidak** diubah: berasal dari layout LMS lama dan hanya muncul karena backend LMS tidak dijalankan saat pengujian. Memperbaikinya berarti mengubah `lms-backend`/kode LMS, yang berada di luar batas skripsi CBT mandiri.
+
+Verifikasi setelah perbaikan: 25/25 uji murni lulus, `npm run build` lulus, dan uji browser membuktikan jawaban tetap terbaca setelah reload, ketiga label proctor tampil, serta attempt berubah menjadi "Selesai" setelah dikumpulkan.
+
 ### Catatan pengambilan bukti
 
 `npm run lint` penuh **tidak** dipakai sebagai gate karena memiliki sekitar 103 kesalahan yang sudah ada sebelumnya di luar cakupan CBT. Untuk skripsi, sebutkan gate yang benar-benar dijalankan di atas, jangan menyatakan bahwa lint penuh lulus.
 
 ## 6. Keterbatasan yang diketahui
 
-1. **Mock adapter berstate memori:** data hilang saat halaman dimuat ulang. Ini perilaku adapter contoh yang sengaja dipertahankan; bukan kegagalan penyimpanan server.
+1. **State mock disimpan di `sessionStorage`:** data bertahan saat halaman dimuat ulang dalam tab yang sama, tetapi hilang pada tab/sesi baru atau bila kunci `cbt-mock-state-v1` dihapus. Ini perilaku adapter contoh, bukan bukti penyimpanan server. Untuk mengulang demo dari awal, hapus kunci tersebut di DevTools → Application → Session Storage.
 2. **`crypto.randomUUID()` memerlukan konteks aman:** hanya tersedia di `localhost` atau HTTPS. Bila UI nanti dilayani lewat HTTP biasa bukan localhost, pembuatan id harus diganti.
 3. **`npm run lint` penuh memiliki sekitar 103 error lama** di luar CBT. Pemeriksaan CBT memakai `npx eslint` pada berkas yang diubah saja.
 4. **Penolakan fullscreen belum dicatat sebagai event:** ujian tetap berjalan, tetapi kondisi tersebut tidak menghasilkan catatan proctoring. Perilaku ini menunggu keputusan Q08/Q09.
 5. **Halaman hasil sengaja tidak diaktifkan:** `HasilUjianPage` tidak dirender/default sampai visibilitas hasil (Q04) diputuskan. Tidak ada klaim nilai atau kunci jawaban untuk peserta.
 6. **Integrasi belum ada:** autentikasi dan enrollment LMS, sinkronisasi nilai CBT baru, serta endpoint bisnis `cbt-api` belum tersedia. Client kedua dan adapter masih berupa persiapan untuk integrasi, bukan integrasi yang berjalan.
 7. **Editor soal belum memiliki identitas entitas suntingan:** dua kali **Simpan soal** menghasilkan dua entri dengan id berbeda. Jika nanti ada alur sunting soal, id perlu diambil dari state/data yang dimuat.
-8. **`saveAnswer` pada mock hanya mengonfirmasi:** indikator "Tersimpan" muncul setelah adapter merespons, tetapi `getAttempt` masih mengembalikan `jawabanTersimpan: null`. Ini batas mock, bukan klaim bahwa jawaban tersimpan di server.
-9. **Riwayat proktor menampilkan kode event mentah:** misalnya `window_blur` dan `fullscreen_exit`. Label dibahasakan setelah kosakata event diputuskan pada Q08/Q09.
 
 ## 7. Cara menjalankan dan menunjukkan
 

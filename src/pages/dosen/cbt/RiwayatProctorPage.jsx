@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, History, Loader2 } from 'lucide-react';
 import { cbtAdapter } from '../../../services/cbt/index.js';
+import { labelPeristiwaProctor } from '../../../lib/proctorEvents.js';
 
 export default function RiwayatProctorPage() {
   const { id } = useParams();
@@ -87,7 +88,7 @@ export default function RiwayatProctorPage() {
               {events.map((event, indeks) => (
                 <tr key={`${event.waktu}-${indeks}`}>
                   <td className="px-6 py-4 text-[13px] text-[#1E293B]">
-                    {event.tipe}
+                    {labelPeristiwaProctor(event.tipe)}
                   </td>
                   <td className="px-6 py-4 text-[13px] text-gray-500">
                     {new Date(event.waktu).toLocaleString('id-ID')}
