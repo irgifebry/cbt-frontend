@@ -158,6 +158,26 @@ Hasil pengujian antarmuka secara menyeluruh:
 
 `orca console` tidak melaporkan error. Screenshot dibuat untuk halaman penilaian instruktur dan daftar ujian peserta. Batas yang teramati: membuka halaman dengan navigasi penuh (`goto`) menghilangkan state mock dalam memori, sehingga ujian yang baru dibuat tidak ditemukan — perilaku ini sudah tercantum dalam bagian Keterbatasan dan bukan bug penyimpanan server.
 
+### 6. Uji end-to-end menyeluruh memakai agent-browser — 26 November 2026
+
+Pengujian ulang dilakukan dengan `agent-browser` (sesi terisolasi `cbt-e2e-*`) terhadap dev server `http://127.0.0.1:5181/`. Berbeda dari uji Orca CLI yang memakai navigasi penuh, uji ini memakai alur klik dan navigasi SPA sehingga state mock tetap terjaga antarhalaman.
+
+| Fitur | Hasil |
+|---|---|
+| Peserta: daftar attempt dan halaman konfirmasi | Lulus |
+| Peserta: soal pilihan tunggal, esai, dan unggah dokumen | Ketiganya dapat diisi; indikator `Menyimpan…` → `Tersimpan` muncul |
+| Peserta: pindah soal cepat dan submit langsung setelah mengubah jawaban | "Jawaban berhasil dikumpulkan." — `flush()` bekerja |
+| Peserta: tiga peristiwa proctoring | `tab_hidden`, `window_blur`, `fullscreen_exit` tercatat; riwayat proktor menampilkan `window_blur` dan `fullscreen_exit` lewat navigasi SPA |
+| Peserta: kunci jawaban | Tidak ada field `kunci` pada payload `getAttempt` |
+| Instruktur: otorisasi | Tanpa token, `/dosen/cbt/ujian` dialihkan ke `/login` |
+| Instruktur: validasi bobot | 101 ditolak; `-10 + 110` ditolak; `60 + 40` diterima |
+| Instruktur: ujian yang sudah ada | Tombol simpan dinonaktifkan; setelah publikasi semua input disabled |
+| Instruktur: empat tipe soal | Pemilihan tipe mengubah kolom formulir dengan benar; dua kali simpan menghasilkan dua UUID berbeda |
+| Instruktur: kunci jawaban | Tersedia untuk instruktur, tidak dikirim ke peserta |
+| Instruktur: monitoring, riwayat proctor, penilaian manual | Lulus; nilai kosong ditolak, nilai `88` tersimpan |
+
+Console hanya mencatat error `Gagal mengambil data profil` dari layout LMS yang sudah ada karena backend LMS tidak dijalankan dalam pengujian ini; tidak ada error yang berasal dari fitur CBT.
+
 ### Catatan pengambilan bukti
 
 `npm run lint` penuh **tidak** dipakai sebagai gate karena memiliki sekitar 103 kesalahan yang sudah ada sebelumnya di luar cakupan CBT. Untuk skripsi, sebutkan gate yang benar-benar dijalankan di atas, jangan menyatakan bahwa lint penuh lulus.
@@ -171,10 +191,12 @@ Hasil pengujian antarmuka secara menyeluruh:
 5. **Halaman hasil sengaja tidak diaktifkan:** `HasilUjianPage` tidak dirender/default sampai visibilitas hasil (Q04) diputuskan. Tidak ada klaim nilai atau kunci jawaban untuk peserta.
 6. **Integrasi belum ada:** autentikasi dan enrollment LMS, sinkronisasi nilai CBT baru, serta endpoint bisnis `cbt-api` belum tersedia. Client kedua dan adapter masih berupa persiapan untuk integrasi, bukan integrasi yang berjalan.
 7. **Editor soal belum memiliki identitas entitas suntingan:** dua kali **Simpan soal** menghasilkan dua entri dengan id berbeda. Jika nanti ada alur sunting soal, id perlu diambil dari state/data yang dimuat.
+8. **`saveAnswer` pada mock hanya mengonfirmasi:** indikator "Tersimpan" muncul setelah adapter merespons, tetapi `getAttempt` masih mengembalikan `jawabanTersimpan: null`. Ini batas mock, bukan klaim bahwa jawaban tersimpan di server.
+9. **Riwayat proktor menampilkan kode event mentah:** misalnya `window_blur` dan `fullscreen_exit`. Label dibahasakan setelah kosakata event diputuskan pada Q08/Q09.
 
 ## 7. Cara menjalankan dan menunjukkan
 
-Dari root worktree `lms-frontend-cbt-ui`:
+Dari root repositori `cbt-frontend`:
 
 ```bash
 cp .env.example .env
