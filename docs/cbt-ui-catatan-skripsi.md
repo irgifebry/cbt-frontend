@@ -224,6 +224,7 @@ npm run dev -- --host 127.0.0.1
 **Dokumen terkait:**
 
 - [Dokumen cakupan seluruh CBT](cakupan-seluruh-cbt.md) — peta ekosistem, status implementasi, dan keputusan terbuka.
+- [Diagram cakupan](diagram-cakupan.html) — visualisasi arsitektur dan batas cakupan.
 - [PRD API CBT](../CBT-API.md) — kebutuhan dan kontrak API.
 - [Matriks kebutuhan CBT](cbt-requirements-matrix.md) — status arahan pembimbing dan Q01–Q12.
 - [Catatan dan pertanyaan konsultasi](pertanyaan-konfirmasi-dosen-pembimbing-cbt.md) — sumber arahan, termasuk No. 9.
