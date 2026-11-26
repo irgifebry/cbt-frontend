@@ -44,3 +44,14 @@ Jika `npm ci` gagal karena izin cache npm (`EACCES`), pakai ulang `node_modules`
 ## Verifikasi terakhir
 
 25/25 test murni lulus, build lulus, dan uji end-to-end memakai Orca CLI serta `agent-browser` berhasil. Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
+
+## Kewajiban pembaruan menyeluruh
+
+Setiap perubahan pada CBT — kode, dokumentasi, atau konfigurasi — wajib diikuti pembaruan yang sesuai agar tidak ada yang tertinggal:
+
+1. **Dokumentasi:** README, `docs/cakupan-seluruh-cbt.md`, `docs/cbt-ui-catatan-skripsi.md`, OpenAPI/ERD bila kontrak atau skema berubah, contoh request/response, dan langkah verifikasi (CBT-R12).
+2. **Diagram:** bila cakupan, arsitektur, atau status keputusan berubah, perbarui diagram cakupan memakai skill `diagram-design`. Diagram cakupan lengkap **belum dibuat** dan menjadi pekerjaan wajib berikutnya.
+3. **Repository:** jaga metadata GitHub (deskripsi About, homepage, topics), status branch, dan sinkronisasi remote agar tetap rapi.
+4. **Memori AI:** perbarui `AGENTS.md` dan `CLAUDE.md` (root serta repo terkait) bila aturan, status, atau keputusan berubah, supaya agen baru otomatis mengikuti keadaan terbaru.
+
+Jangan menganggap pekerjaan selesai sebelum keempat hal di atas dicek.
