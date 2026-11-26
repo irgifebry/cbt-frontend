@@ -207,7 +207,7 @@ PRD menargetkan: endpoint berfungsi, database dan relasi konsisten, proses bisni
 
 ## 10. Dokumen dan bukti terkait
 
-- [PRD API CBT](CBT-API.md) — kebutuhan, endpoint rancangan, aturan bisnis, Bab 17.
+- [PRD API CBT](../CBT-API.md) — kebutuhan, endpoint rancangan, aturan bisnis, Bab 17.
 - [Matriks kebutuhan](cbt-requirements-matrix.md) — arahan pembimbing vs keputusan terbuka.
 - [Catatan konsultasi](pertanyaan-konfirmasi-dosen-pembimbing-cbt.md) — 14 pertanyaan, termasuk No. 9.
 - [Desain antarmuka web](superpowers/specs/2026-11-25-cbt-web-ui-design.md) — keputusan arsitektur UI.
