@@ -18,7 +18,7 @@ npm run dev -- --host 127.0.0.1
 
 Bagian ini mendokumentasikan antarmuka web CBT di repositori ini untuk keperluan **pengembangan dan demonstrasi**. Antarmuka ini **tidak untuk produksi** dan **tidak menggantikan** alur CBT yang sudah ada di LMS (`link_cbt` / `token_cbt` / `nilai_cbt`). Alur lama tetap menjadi satu-satunya jalur yang didukung untuk tugas CBT. Pekerjaan ini tidak mengubah `lms-backend/`, `lms-mobile/`, maupun `cbt-api/`.
 
-Ringkasan untuk keperluan skripsi — batas cabang, keputusan arsitektur, status kebutuhan, bukti verifikasi, dan keterbatasan — ada di [Catatan skripsi — antarmuka web CBT](docs/cbt-ui-catatan-skripsi.md).
+Ringkasan untuk keperluan skripsi — batas cabang, keputusan arsitektur, status kebutuhan, bukti verifikasi, dan keterbatasan — ada di [Catatan skripsi — antarmuka web CBT](docs/cbt-ui-catatan-skripsi.md). Peta menyeluruh seluruh cakupan CBT (PRD, API, UI, integrasi LMS, dan keputusan yang masih menunggu dosen) ada di [Dokumen cakupan seluruh CBT](docs/cakupan-seluruh-cbt.md).
 
 ### Konfigurasi
 
