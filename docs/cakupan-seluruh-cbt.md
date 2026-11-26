@@ -14,12 +14,12 @@ Dokumen ini menjawab satu pertanyaan: **"Apa saja yang termasuk CBT, apa yang su
 |---|---|---|---|
 | PRD CBT | `CBT-API.md` (root workspace, disalin ke repo ini) | Sumber kebutuhan dan aturan bisnis | Draf; 12 butir masih menunggu konfirmasi (Bab 17) |
 | API CBT | `cbt-api` (`github.com/irgifebry/cbt-api`) | Backend mandiri + basis data sendiri | Fondasi saja: `GET /api/health`, response standar, ERD konseptual, OpenAPI health, Postman, CI |
-| Antarmuka web CBT | `cbt-frontend` (repo ini) | Demo alur peserta dan instruktur | Lengkap untuk demonstrasi dengan mock adapter |
+| Antarmuka web CBT | `cbt-frontend` (repo ini) | Demo alur peserta dan instruktur | Alur utama lengkap untuk demonstrasi dengan mock adapter; belum mencakup hasil, autentikasi nyata, atau integrasi LMS |
 | Backend LMS | `lms-backend` | Pemilik data tugas/peserta/nilai CBT lama | **Tidak diubah**; memakai `link_cbt`, `token_cbt`, `nilai_cbt` |
 | Frontend LMS | `lms-frontend` | Konsumen alur CBT lama | **Tidak diubah**; `TugasModal`, `DetailProgressModal`, `getLaunchUrl` |
 | Mobile LMS | `lms-mobile` | Daftar tugas & status nilai peserta | **Tidak diubah**; belum ada masuk ujian CBT |
 
-**Catatan penting:** PRD Bab 1.1–1.2 masih menyebut pengembangan "pada backend Ucademy", tetapi Bab 2.2 ketentuan dan arahan terbaru di `AGENTS.md` menetapkan aplikasi dan basis data **terpisah** dengan data contoh pada tahap awal. Dokumen ini memakai arahan terbaru; perbedaan PRD perlu dicatat pada revisi berikutnya.
+**Catatan penting:** PRD Bab 1.1–1.2 masih menyebut pengembangan "pada backend Ucademy", tetapi paragraf **Ketentuan** di akhir Bab 2.2 dan arahan terbaru di `AGENTS.md` menetapkan aplikasi dan basis data **terpisah** dengan data contoh pada tahap awal. Dokumen ini memakai arahan terbaru; perbedaan PRD perlu dicatat pada revisi berikutnya.
 
 ---
 
@@ -48,7 +48,7 @@ Dokumen ini menjawab satu pertanyaan: **"Apa saja yang termasuk CBT, apa yang su
 
 UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, webcam/face recognition/eye tracking/AI cheating detection, screen recording, device monitoring, layanan CBT eksternal baru, dan fitur proctoring lanjutan.
 
-**Penyesuaian penulis:** antarmuka web CBT dibuat di luar cakupan PRD awal atas permintaan penulis sebagai media demonstrasi skripsi. Ini **tidak** mengubah status keputusan pembimbing dan tidak dimaksudkan sebagai pengganti integrasi LMS.
+**Penyesuaian penulis:** antarmuka web CBT dibuat di luar cakupan PRD awal sebagai media demonstrasi skripsi oleh penulis skripsi (Irgi Febryansyah, sesuai identitas di PRD). Ini **tidak** mengubah status keputusan pembimbing dan tidak dimaksudkan sebagai pengganti integrasi LMS.
 
 ### 2.3 Aktor (PRD Bab 5)
 
@@ -70,7 +70,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Laravel 13 / PHP 8.3 / Docker / SQLite | Selesai | `Dockerfile`, `composer.json`, `scripts/verify-local.sh` |
 | `GET /api/health` | Selesai | `routes/api.php` |
 | Format response seragam + global exception handler | Selesai | `app/Traits/ApiResponse.php`, `bootstrap/app.php`, `tests/Feature/ApiResponseFormatTest.php` |
-| ERD konseptual 10 entitas | Selesai (pra-migrasi) | `docs/erd-konseptual.md` |
+| ERD konseptual 10 entitas (PRD Bab 9) | Selesai (pra-migrasi) | `docs/erd-konseptual.md` |
 | OpenAPI untuk endpoint yang ada | Selesai (health only) | `docs/openapi.yaml` |
 | Koleksi Postman | Selesai (health only) | `docs/postman/CBT-API.postman_collection.json` |
 | CI + verifikasi lokal | Selesai | `.github/workflows/ci.yml` |
@@ -87,7 +87,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Autosave per soal + idempotensi + `flush()` saat submit | Selesai (mock) | Status hanya muncul setelah adapter merespons |
 | Proctoring browser | Selesai (pencatatan) | `tab_hidden`, `fullscreen_exit`, `window_blur`; label Indonesia; tanpa konsekuensi |
 | Kelola ujian & soal instruktur | Selesai (demo) | Enam route di bawah `/dosen/cbt/...` dengan `ProtectedRoute` dosen |
-| Validasi bobot > 100 dan bobot negatif | Selesai | Sesuai CBT-R05; total < 100 tidak dinormalisasi |
+| Validasi bobot > 100 dan bobot negatif | Selesai | Sesuai CBT-R05; untuk total < 100 UI sengaja **tidak menormalisasi** sebagai asumsi kerja — Q02 masih terbuka dan belum diputuskan dosen |
 | Publikasi → editor read-only | Selesai | Sesuai keputusan No. 9 |
 | Monitoring attempt + riwayat proctor | Selesai | Tanpa label kecurangan/tindakan otomatis |
 | Penilaian manual esai/dokumen | Selesai | Nilai kosong ditolak; tidak ada penilaian PG otomatis |
@@ -117,7 +117,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Penilaian otomatis + manual | `/attempts/{id}/grading...` | Belum ada | Manual saja (mock) |
 | Hasil ujian | `/attempts/{id}/result`, `/assessments/{id}/results` | Belum ada | Sengaja nonaktif (Q04) |
 | Pemantauan ujian | `/attempts/{id}/proctor-events` | Belum ada | Pencatatan browser (mock) |
-| Autentikasi + otorisasi | Menggunakan Ucademy | Belum ada | Token contoh; tidak untuk produksi |
+| Autentikasi + otorisasi | PRD merencanakan memakai akun Ucademy, tapi detailnya bergantung Q12 | Belum ada | Token contoh; tidak untuk produksi |
 
 ---
 
@@ -161,7 +161,11 @@ Sumber: `docs/cbt-requirements-matrix.md`, `docs/pertanyaan-konfirmasi-dosen-pem
 | Q11 | Opsi ikut diacak atau tidak; konsistensi resume | Penyajian soal |
 | Q12 | Identitas pengajar/peserta & login/enrollment LMS | Batas integrasi & otorisasi |
 
-**Sudah ada arahan:** keempat tipe soal, bobot per soal dengan total maksimal 100, timer, pengacakan soal, autosave tiap jawaban + lanjut attempt, proctoring dasar, soal tidak boleh diubah setelah publikasi (No. 9), UI belum menjadi fokus PRD awal.
+**Sudah ada arahan** (sumber: bagian "Arahan dosen yang sudah ada" pada catatan konsultasi): keempat tipe soal, bobot per soal dengan total maksimal 100, timer, pengacakan soal, autosave tiap jawaban + lanjut attempt, proctoring dasar, dan soal tidak boleh diubah setelah publikasi (No. 9). UI belum menjadi fokus PRD awal.
+
+**Hubungan No. 9 dan Q07:** No. 9 memutuskan soal yang sudah dipublikasikan tidak boleh diubah; Q07 masih menanyakan bagaimana pengajar menangani kesalahan/versi baru. Keduanya tidak bertentangan — UI saat ini memilih read-only dan belum menyediakan mekanisme koreksi.
+
+**Peran Pak Fitrah:** **Pak Fitrah adalah dosen pembimbing penulis.** Q05 (platform web/mobile) dalam catatan konsultasi ditujukan kepadanya. Sampai beliau menjawab, web-first tetap usulan penulis, bukan keputusan pembimbing.
 
 ---
 
@@ -198,10 +202,10 @@ PRD menargetkan: endpoint berfungsi, database dan relasi konsisten, proses bisni
 | Pernyataan | Benar? |
 |---|---|
 | CBT siap produksi | **Tidak** — mock, tanpa auth dan endpoint bisnis |
-| UI menggantikan alur `link_cbt`/`token_cbt`/`nilai_cbt` | **Tidak** — alur lama tetap satu-satunya jalur resmi LMS |
+| UI menggantikan alur `link_cbt`/`token_cbt`/`nilai_cbt` | **Tidak** — alur lama tetap menjadi jalur yang saat ini didukung LMS |
 | Semua fitur PRD sudah dibuat | **Tidak** — baru fondasi API + demo UI |
-| Q01–Q12 sudah diputuskan dosen | **Tidak** — seluruhnya terbuka |
-| Web sudah dikonfirmasi pembimbing | **Tidak** — Q05 masih menunggu Pak Fitrah |
+| Q01–Q12 sudah diputuskan dosen | **Tidak** — belum ada keputusan dosen untuk ke-12 butir; sebagian arahan umum sudah ada (bagian 6) |
+| Web sudah dikonfirmasi pembimbing | **Tidak** — web-first adalah keputusan penulis; Q05 masih menunggu konfirmasi |
 
 ---
 
