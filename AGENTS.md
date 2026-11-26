@@ -50,7 +50,7 @@ Jika `npm ci` gagal karena izin cache npm (`EACCES`), pakai ulang `node_modules`
 Setiap perubahan pada CBT — kode, dokumentasi, atau konfigurasi — wajib diikuti pembaruan yang sesuai agar tidak ada yang tertinggal:
 
 1. **Dokumentasi:** README, `docs/cakupan-seluruh-cbt.md`, `docs/cbt-ui-catatan-skripsi.md`, OpenAPI/ERD bila kontrak atau skema berubah, contoh request/response, dan langkah verifikasi (CBT-R12).
-2. **Diagram:** bila cakupan, arsitektur, atau status keputusan berubah, perbarui diagram cakupan memakai skill `diagram-design`. Diagram cakupan tersedia di `docs/diagram-cakupan.html`; perbarui bila cakupan atau arsitektur berubah.
+2. **Diagram:** bila cakupan, arsitektur, atau status keputusan berubah, perbarui diagram cakupan memakai skill `diagram-design`. Diagram cakupan tersedia di `docs/diagram-cakupan.html`, dengan `diagram-cakupan.png` dan `diagram-cakupan.svg` di folder yang sama; perbarui bila cakupan atau arsitektur berubah.
 3. **Repository:** jaga metadata GitHub (deskripsi About, homepage, topics), status branch, dan sinkronisasi remote agar tetap rapi.
 4. **Memori AI:** perbarui `AGENTS.md` dan `CLAUDE.md` (root serta repo terkait) bila aturan, status, atau keputusan berubah, supaya agen baru otomatis mengikuti keadaan terbaru.
 5. **Screenshot UI:** setiap perubahan tampilan wajib diambil screenshot terbaru (memakai `agent-browser` atau Orca), disimpan di `cbt-frontend/docs/screenshots/`, lalu diperbarui pada lampiran `docs/cbt-ui-catatan-skripsi.md`. Jangan membiarkan screenshot lama menggambarkan UI yang sudah berubah.

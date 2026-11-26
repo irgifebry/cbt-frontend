@@ -211,7 +211,7 @@ PRD menargetkan: endpoint berfungsi, database dan relasi konsisten, proses bisni
 
 ## 10. Dokumen dan bukti terkait
 
-- [Diagram cakupan](diagram-cakupan.html) — peta arsitektur tiga zona (skripsi, LMS, belum dibuat).
+- [Diagram cakupan](diagram-cakupan.html) — peta arsitektur tiga zona (skripsi, LMS, belum dibuat); versi [PNG](diagram-cakupan.png) dan [SVG](diagram-cakupan.svg).
 - [PRD API CBT](../CBT-API.md) — kebutuhan, endpoint rancangan, aturan bisnis, Bab 17.
 - [Matriks kebutuhan](cbt-requirements-matrix.md) — arahan pembimbing vs keputusan terbuka.
 - [Catatan konsultasi](pertanyaan-konfirmasi-dosen-pembimbing-cbt.md) — 14 pertanyaan, termasuk No. 9.

@@ -6,6 +6,14 @@ Frontend web untuk layanan CBT mandiri U-Cademy. Fase ini difokuskan pada **peng
 - Catatan untuk skripsi: [Catatan skripsi — antarmuka web CBT](docs/cbt-ui-catatan-skripsi.md)
 - Kebutuhan dan batas: [`CBT-API.md`](CBT-API.md) · [matriks kebutuhan](docs/cbt-requirements-matrix.md) · [catatan konsultasi](docs/pertanyaan-konfirmasi-dosen-pembimbing-cbt.md)
 
+## Diagram cakupan
+
+<p align="center">
+  <img src="docs/diagram-cakupan.png" alt="Diagram cakupan seluruh CBT U-Cademy" width="1280">
+</p>
+
+Versi sumber: [HTML](docs/diagram-cakupan.html) · [SVG](docs/diagram-cakupan.svg).
+
 ## Menjalankan secara lokal
 
 ```bash
