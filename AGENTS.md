@@ -53,5 +53,6 @@ Setiap perubahan pada CBT — kode, dokumentasi, atau konfigurasi — wajib diik
 2. **Diagram:** bila cakupan, arsitektur, atau status keputusan berubah, perbarui diagram cakupan memakai skill `diagram-design`. Diagram cakupan lengkap **belum dibuat** dan menjadi pekerjaan wajib berikutnya.
 3. **Repository:** jaga metadata GitHub (deskripsi About, homepage, topics), status branch, dan sinkronisasi remote agar tetap rapi.
 4. **Memori AI:** perbarui `AGENTS.md` dan `CLAUDE.md` (root serta repo terkait) bila aturan, status, atau keputusan berubah, supaya agen baru otomatis mengikuti keadaan terbaru.
+5. **Screenshot UI:** setiap perubahan tampilan wajib diambil screenshot terbaru (memakai `agent-browser` atau Orca), disimpan di `cbt-frontend/docs/screenshots/`, lalu diperbarui pada lampiran `docs/cbt-ui-catatan-skripsi.md`. Jangan membiarkan screenshot lama menggambarkan UI yang sudah berubah.
 
-Jangan menganggap pekerjaan selesai sebelum keempat hal di atas dicek.
+Jangan menganggap pekerjaan selesai sebelum kelima hal di atas dicek.
