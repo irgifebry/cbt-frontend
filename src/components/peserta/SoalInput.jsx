@@ -1,3 +1,5 @@
+import { normalisasiJawaban } from '../../lib/jawabanUpload.js';
+
 const LABEL_TIPE = {
   pilihan_tunggal: 'Pilihan tunggal',
   pilihan_ganda: 'Pilihan ganda',
@@ -124,7 +126,7 @@ export default function SoalInput({ soal, jawaban, onChange }) {
           <input
             type="file"
             aria-label={`Berkas jawaban soal ${soal?.nomor}`}
-            onChange={(event) => onChange(event.target.files?.[0] ?? null)}
+            onChange={(event) => onChange(normalisasiJawaban(event.target.files?.[0] ?? null))}
             className="text-[13px] text-[#1E293B] file:mr-3 file:px-4 file:py-2 file:rounded-lg file:border-0 file:bg-[#167A61] file:text-white file:cursor-pointer"
           />
           {namaBerkas && (

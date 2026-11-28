@@ -516,6 +516,6 @@ Dengan demikian label aksesibilitas terpasang pada grup pilihan, textarea esai, 
 
 ## Uji end-to-end browser — 28 November 2026 (lanjutan)
 
-Laporan lengkap: [e2e-browser-28-11-2026.md](e2e-browser-28-11-2026.md). Dua session browser terpisah menjalankan 14 skenario: 13 lulus, 1 sebagian. Alur peserta (autosave, reload, esai, submit), alur instruktur (validasi bobot, publikasi read-only, id soal unik, penilaian manual), dan riwayat proktor terverifikasi di browser nyata.
+Laporan lengkap: [e2e-browser-28-11-2026.md](e2e-browser-28-11-2026.md). Dua session browser terpisah menjalankan 14 skenario awal (13 lulus, 1 temuan), lalu satu skenario uji ulang setelah perbaikan. Alur peserta (autosave, reload, esai, submit), alur instruktur (validasi bobot, publikasi read-only, id soal unik, penilaian manual), dan riwayat proktor terverifikasi di browser nyata.
 
-Satu temuan terbuka: jawaban tipe unggah disimpan sebagai `{}` karena objek `File` di-`JSON.stringify`; nama berkas tampil di UI tetapi tidak bertahan sebagai string di `sessionStorage`. Validasi format/ukuran tetap sengaja tidak diterapkan (Q06). Perbaikan yang diusulkan: normalisasi `File` menjadi nama berkas sebelum autosave.
+Temuan jawaban unggah sudah diperbaiki dengan `src/lib/jawabanUpload.js`: `File` dinormalisasi menjadi nama berkas sebelum autosave. Uji ulang `node --test` (40/40 lulus), lint scoped, build, dan browser (`28-11-2026-e2e-08-unggah-fix.png`) membuktikan `jawabanTersimpan` bertahan sebagai string setelah reload. Validasi format/ukuran tetap sengaja tidak diterapkan (Q06).

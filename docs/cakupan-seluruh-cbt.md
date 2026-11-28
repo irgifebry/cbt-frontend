@@ -94,7 +94,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Halaman hasil / publikasi hasil | **Sengaja tidak diaktifkan** | Menunggu Q04 |
 | Client HTTP ke `cbt-api` | Disiapkan | `src/config/cbtApi.js`; belum dipakai karena endpoint belum ada |
 | Autentikasi/enrollment LMS | **Belum** | Menunggu Q12 |
-| Verifikasi | Selesai | 37/37 test murni, build, lint ter-scoped, E2E Orca CLI + agent-browser; 14 skenario browser 28 Nov (13 lulus, 1 temuan unggah) |
+| Verifikasi | Selesai | 40/40 test murni, build, lint ter-scoped, E2E Orca CLI + agent-browser; 15 skenario browser 28 Nov (semua lulus setelah perbaikan unggah) |
 
 ### 3.3 Integrasi dengan LMS yang sudah ada
 
@@ -222,5 +222,5 @@ PRD menargetkan: endpoint berfungsi, database dan relasi konsisten, proses bisni
 - [Rencana peserta](superpowers/plans/2026-11-25-cbt-web-ui-peserta.md) dan [rencana instruktur](superpowers/plans/2026-11-25-cbt-web-ui-instruktur.md).
 - [Catatan skripsi](cbt-ui-catatan-skripsi.md) — ringkasan, batas, bukti verifikasi, dan [lampiran tampilan](screenshots/).
 - [Bukti verifikasi](bukti-verifikasi-cbt-ui.md) — laporan uji/build/skenario browser.
-- [Uji E2E browser](e2e-browser-28-11-2026.md) — 14 skenario peserta/instruktur, 13 lulus dan 1 temuan unggah.
+- [Uji E2E browser](e2e-browser-28-11-2026.md) — 15 skenario peserta/instruktur, semua lulus setelah perbaikan jawaban unggah.
 - [README frontend](../README.md) — cara menjalankan.

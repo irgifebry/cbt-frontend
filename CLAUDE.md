@@ -35,13 +35,13 @@ npx eslint src/lib src/services/cbt src/pages/peserta src/pages/dosen/cbt src/co
 - `src/config/api.js` — client LMS lama (jangan diubah).
 - `src/config/cbtApi.js` — client kedua ke `cbt-api` (belum dipakai karena endpoint belum ada).
 - `src/services/cbt/index.js` — titik ganti `cbtAdapter` dari mock ke HTTP.
-- `src/lib/` — logika murni: `autosave.js`, `bobot.js`, `cbtErrors.js`, `proctorEvents.js`.
+- `src/lib/` — logika murni: `autosave.js`, `bobot.js`, `cbtErrors.js`, `proctorEvents.js`, `jawabanUpload.js` (normalisasi `File` jadi nama berkas).
 - `src/pages/peserta/`, `src/pages/dosen/cbt/` — layar CBT.
 - `docs/screenshots/` — bukti tampilan hasil uji end-to-end.
 
 ## Verifikasi terakhir
 
-37/37 test murni lulus, build lulus, uji end-to-end Orca CLI/`agent-browser` berhasil, dan 14 skenario browser 28 Nov: 13 lulus, 1 temuan penyimpanan jawaban unggah (lihat `docs/e2e-browser-28-11-2026.md`). Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
+40/40 test murni lulus, build lulus, uji end-to-end Orca CLI/`agent-browser` berhasil, dan 15 skenario browser 28 Nov semua lulus setelah perbaikan `jawabanUpload.js` (lihat `docs/e2e-browser-28-11-2026.md`). Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
 
 ## Kewajiban pembaruan menyeluruh
 

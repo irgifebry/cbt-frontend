@@ -188,7 +188,7 @@ Tiga temuan di atas diperbaiki tanpa menunggu keputusan pembimbing karena semuan
 
 Error `Gagal mengambil data profil` **tidak** diubah: berasal dari layout LMS lama dan hanya muncul karena backend LMS tidak dijalankan saat pengujian. Memperbaikinya berarti mengubah `lms-backend`/kode LMS, yang berada di luar batas skripsi CBT mandiri.
 
-Verifikasi setelah perbaikan: 25/25 uji murni lulus, `npm run build` lulus, dan uji browser membuktikan jawaban tetap terbaca setelah reload, ketiga label proctor tampil, serta attempt berubah menjadi "Selesai" setelah dikumpulkan. Verifikasi lanjutan 28 November menambah 12 uji edge case menjadi **37/37 lulus**, menambahkan label aksesibilitas non-visual pada input jawaban, dan mengambil screenshot terbaru; rincian ada di [bukti verifikasi](bukti-verifikasi-cbt-ui.md). Uji E2E browser lanjutan pada hari yang sama: 13 dari 14 skenario lulus, dengan satu temuan pada penyimpanan jawaban unggah; rincian ada di [laporan E2E](e2e-browser-28-11-2026.md).
+Verifikasi setelah perbaikan: 25/25 uji murni lulus, `npm run build` lulus, dan uji browser membuktikan jawaban tetap terbaca setelah reload, ketiga label proctor tampil, serta attempt berubah menjadi "Selesai" setelah dikumpulkan. Verifikasi lanjutan 28 November menambah 12 uji edge case menjadi **37/37 lulus**, menambahkan label aksesibilitas non-visual pada input jawaban, dan mengambil screenshot terbaru; rincian ada di [bukti verifikasi](bukti-verifikasi-cbt-ui.md). Uji E2E browser lanjutan pada hari yang sama: 13 dari 14 skenario lulus dengan satu temuan penyimpanan jawaban unggah; temuan tersebut diperbaiki lewat `src/lib/jawabanUpload.js` dan diuji ulang di browser, sehingga seluruh 15 skenario lulus. Rincian ada di [laporan E2E](e2e-browser-28-11-2026.md).
 
 ### Catatan pengambilan bukti
 
@@ -233,7 +233,7 @@ npm run dev -- --host 127.0.0.1
 - [Rencana implementasi peserta](superpowers/plans/2026-11-25-cbt-web-ui-peserta.md) dan [rencana implementasi instruktur](superpowers/plans/2026-11-25-cbt-web-ui-instruktur.md).
 - [README frontend](../README.md) — petunjuk pengembangan umum.
 - [Bukti verifikasi](bukti-verifikasi-cbt-ui.md) — laporan lengkap uji, build, dan skenario browser.
-- [Uji E2E browser 28 November](e2e-browser-28-11-2026.md) — 14 skenario peserta dan instruktur beserta temuan jawaban unggah.
+- [Uji E2E browser 28 November](e2e-browser-28-11-2026.md) — 15 skenario peserta dan instruktur, termasuk uji ulang jawaban unggah.
 
 ## 8. Lampiran tampilan
 
@@ -251,3 +251,4 @@ Tampilan berikut diambil dari uji menyeluruh dengan `agent-browser` (browser ter
 | Riwayat proktor | ![Riwayat proktor](screenshots/09-riwayat-proktor.png) |
 | Penilaian manual | ![Penilaian manual](screenshots/10-penilaian.png) |
 | Pengerjaan dengan label aksesibilitas (28 November 2026) | ![Pengerjaan dan ARIA](screenshots/28-11-2026-pengerjaan-a11y.png) |
+| Jawaban unggah tersimpan setelah perbaikan | ![Unggah tersimpan](screenshots/28-11-2026-e2e-08-unggah-fix.png) |

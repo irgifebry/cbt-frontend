@@ -58,7 +58,7 @@ Jawaban disimpan dengan debounce 800 ms per soal. Tombol **Kumpulkan** mengosong
 
 ### Verifikasi lokal
 
-Laporan uji end-to-end browser: [14 skenario 28 November 2026](docs/e2e-browser-28-11-2026.md).
+Laporan uji end-to-end browser: [15 skenario 28 November 2026](docs/e2e-browser-28-11-2026.md).
 
 Jalankan dari direktori `lms-frontend/`:
 
