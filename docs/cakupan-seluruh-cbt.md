@@ -173,6 +173,8 @@ Skema fisik `cbt-api` sudah dibuat sebagai *skeleton*: kolom yang berkaitan deng
 
 ## 7. Arsitektur dan batas integrasi
 
+Peta alur user dan kontrak LMS produksi yang dipakai sebagai acuan teknis: [peta integrasi LMS–CBT](peta-integrasi-lms-cbt.md). Ini analisis penulis, bukan persetujuan pembimbing; tidak mengubah arsitektur di bawah ini.
+
 **Keputusan penulis (bukan dosen):**
 - Web-first, UI di `cbt-frontend`, alur peserta + instruktur.
 - **Pendekatan A sekarang:** UI → `cbt-api` langsung lewat client kedua (`VITE_CBT_API_BASE_URL`) dengan ID contoh.
@@ -223,4 +225,5 @@ PRD menargetkan: endpoint berfungsi, database dan relasi konsisten, proses bisni
 - [Catatan skripsi](cbt-ui-catatan-skripsi.md) — ringkasan, batas, bukti verifikasi, dan [lampiran tampilan](screenshots/).
 - [Bukti verifikasi](bukti-verifikasi-cbt-ui.md) — laporan uji/build/skenario browser.
 - [Uji E2E browser](e2e-browser-28-11-2026.md) — 15 skenario peserta/instruktur, semua lulus setelah perbaikan jawaban unggah.
+- [Peta integrasi LMS–CBT](peta-integrasi-lms-cbt.md) — alur user dan kontrak produksi yang jadi acuan bila Q12 dijawab.
 - [README frontend](../README.md) — cara menjalankan.

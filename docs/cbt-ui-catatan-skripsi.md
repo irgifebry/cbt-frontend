@@ -234,6 +234,7 @@ npm run dev -- --host 127.0.0.1
 - [README frontend](../README.md) — petunjuk pengembangan umum.
 - [Bukti verifikasi](bukti-verifikasi-cbt-ui.md) — laporan lengkap uji, build, dan skenario browser.
 - [Uji E2E browser 28 November](e2e-browser-28-11-2026.md) — 15 skenario peserta dan instruktur, termasuk uji ulang jawaban unggah.
+- [Peta integrasi LMS–CBT](peta-integrasi-lms-cbt.md) — acuan teknis bila integrasi diizinkan; bukan keputusan pembimbing.
 
 ## 8. Lampiran tampilan
 
