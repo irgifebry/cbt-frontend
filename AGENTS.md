@@ -37,13 +37,13 @@ Jika `npm ci` gagal karena izin cache npm (`EACCES`), pakai ulang `node_modules`
 - `src/config/api.js` — client LMS lama (jangan diubah).
 - `src/config/cbtApi.js` — client kedua ke `cbt-api` (belum dipakai karena endpoint belum ada).
 - `src/services/cbt/index.js` — titik ganti `cbtAdapter` dari mock ke HTTP.
-- `src/lib/` — logika murni: `autosave.js`, `bobot.js`, `cbtErrors.js`, `proctorEvents.js`, `jawabanUpload.js` (normalisasi `File` jadi nama berkas).
+- `src/lib/` — logika murni: `autosave.js`, `bobot.js`, `cbtErrors.js`, `proctorEvents.js`, `jawabanUpload.js` (normalisasi `File` jadi nama berkas), `navigasiSoal.js` (tombol Kumpulkan hanya di soal terakhir).
 - `src/pages/peserta/`, `src/pages/dosen/cbt/` — layar CBT.
 - `docs/screenshots/` — bukti tampilan hasil uji end-to-end.
 
 ## Verifikasi terakhir
 
-40/40 test murni lulus, build lulus, uji end-to-end Orca CLI/`agent-browser` berhasil, dan 15 skenario browser 28 Nov semua lulus setelah perbaikan `jawabanUpload.js` (lihat `docs/e2e-browser-28-11-2026.md`). Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
+43/43 test murni lulus, build lulus, uji end-to-end Orca CLI/`agent-browser` berhasil, dan 16 skenario browser 28 Nov semua lulus; tombol Kumpulkan hanya muncul di soal terakhir (lihat `docs/e2e-browser-28-11-2026.md`). Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
 
 ## Kewajiban pembaruan menyeluruh
 

@@ -519,3 +519,10 @@ Dengan demikian label aksesibilitas terpasang pada grup pilihan, textarea esai, 
 Laporan lengkap: [e2e-browser-28-11-2026.md](e2e-browser-28-11-2026.md). Dua session browser terpisah menjalankan 14 skenario awal (13 lulus, 1 temuan), lalu satu skenario uji ulang setelah perbaikan. Alur peserta (autosave, reload, esai, submit), alur instruktur (validasi bobot, publikasi read-only, id soal unik, penilaian manual), dan riwayat proktor terverifikasi di browser nyata.
 
 Temuan jawaban unggah sudah diperbaiki dengan `src/lib/jawabanUpload.js`: `File` dinormalisasi menjadi nama berkas sebelum autosave. Uji ulang `node --test` (40/40 lulus), lint scoped, build, dan browser (`28-11-2026-e2e-08-unggah-fix.png`) membuktikan `jawabanTersimpan` bertahan sebagai string setelah reload. Validasi format/ukuran tetap sengaja tidak diterapkan (Q06).
+
+
+---
+
+## Perubahan tombol pengumpulan — 28 November 2026
+
+Aturan tampilan dipindah ke fungsi murni `tampilkanTombolKumpulkan(indeksSoal, jumlahSoal)` di `src/lib/navigasiSoal.js`: tombol **Kumpulkan** hanya dirender pada soal terakhir. Uji murni: `node --test src/lib/*.test.js src/services/cbt/*.test.js` → **43/43 lulus**. Browser: soal 1 tidak memiliki tombol Kumpulkan (`Selanjutnya` tersedia); soal 3 memiliki tombol Kumpulkan dan submit menghasilkan "Jawaban berhasil dikumpulkan." Bukti: `screenshots/28-11-2026-kumpulkan-soal1.png` dan `screenshots/28-11-2026-kumpulkan-soal-akhir.png`. Tidak ada perubahan status attempt, timer, atau aturan Q01–Q12.

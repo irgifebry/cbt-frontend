@@ -7,6 +7,7 @@ import {
   Loader2,
   Send,
 } from 'lucide-react';
+import { tampilkanTombolKumpulkan } from '../../lib/navigasiSoal.js';
 import SoalInput from '../../components/peserta/SoalInput.jsx';
 import { useAutoSave } from '../../hooks/useAutoSave.js';
 import { useProctorEvents } from '../../hooks/useProctorEvents.js';
@@ -260,15 +261,17 @@ export default function PengerjaanUjianPage() {
                       Selanjutnya
                       <ArrowRight size={14} />
                     </button>
-                    <button
-                      type="button"
-                      onClick={kumpulkan}
-                      disabled={sedangMengumpulkan}
-                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#167A61] text-white text-[13px] font-bold hover:bg-[#0E5C46] disabled:opacity-60"
-                    >
-                      <Send size={14} />
-                      Kumpulkan
-                    </button>
+                    {tampilkanTombolKumpulkan(indeksSoal, daftarSoal.length) && (
+                      <button
+                        type="button"
+                        onClick={kumpulkan}
+                        disabled={sedangMengumpulkan}
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#167A61] text-white text-[13px] font-bold hover:bg-[#0E5C46] disabled:opacity-60"
+                      >
+                        <Send size={14} />
+                        Kumpulkan
+                      </button>
+                    )}
                   </div>
                 </div>
 

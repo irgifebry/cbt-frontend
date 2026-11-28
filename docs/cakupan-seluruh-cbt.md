@@ -85,6 +85,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Daftar ujian peserta, konfirmasi, pengerjaan | Selesai (demo) | Route `/cbt`, `/cbt/attempt/:id/konfirmasi`, `/cbt/attempt/:id` |
 | Empat tipe soal | Selesai (input) | Pilihan tunggal, pilihan ganda, esai, unggah dokumen |
 | Autosave per soal + idempotensi + `flush()` saat submit | Selesai (mock) | Status hanya muncul setelah adapter merespons |
+| Tombol **Kumpulkan** di akhir ujian | Selesai | Hanya dirender pada soal terakhir; navigasi memakai `Selanjutnya` |
 | Proctoring browser | Selesai (pencatatan) | `tab_hidden`, `fullscreen_exit`, `window_blur`; label Indonesia; tanpa konsekuensi |
 | Kelola ujian & soal instruktur | Selesai (demo) | Enam route di bawah `/dosen/cbt/...` dengan `ProtectedRoute` dosen |
 | Validasi bobot > 100 dan bobot negatif | Selesai | Sesuai CBT-R05; untuk total < 100 UI sengaja **tidak menormalisasi** sebagai asumsi kerja — Q02 masih terbuka dan belum diputuskan dosen |
@@ -94,7 +95,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Halaman hasil / publikasi hasil | **Sengaja tidak diaktifkan** | Menunggu Q04 |
 | Client HTTP ke `cbt-api` | Disiapkan | `src/config/cbtApi.js`; belum dipakai karena endpoint belum ada |
 | Autentikasi/enrollment LMS | **Belum** | Menunggu Q12 |
-| Verifikasi | Selesai | 40/40 test murni, build, lint ter-scoped, E2E Orca CLI + agent-browser; 15 skenario browser 28 Nov (semua lulus setelah perbaikan unggah) |
+| Verifikasi | Selesai | 43/43 test murni, build, lint ter-scoped, E2E Orca CLI + agent-browser; 16 skenario browser 28 Nov (semua lulus) |
 
 ### 3.3 Integrasi dengan LMS yang sudah ada
 
