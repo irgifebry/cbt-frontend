@@ -13,7 +13,7 @@ Dokumen ini menjawab satu pertanyaan: **"Apa saja yang termasuk CBT, apa yang su
 | Komponen | Repositori | Peran terhadap CBT | Status saat ini |
 |---|---|---|---|
 | PRD CBT | `CBT-API.md` (root workspace, disalin ke repo ini) | Sumber kebutuhan dan aturan bisnis | Draf; 12 butir masih menunggu konfirmasi (Bab 17) |
-| API CBT | `cbt-api` (`github.com/irgifebry/cbt-api`) | Backend mandiri + basis data sendiri | Fondasi saja: `GET /api/health`, response standar, ERD konseptual, OpenAPI health, Postman, CI |
+| API CBT | `cbt-api` (`github.com/irgifebry/cbt-api`) | Backend mandiri + basis data sendiri | Fondasi: `GET /api/health`, response standar, ERD + schema skeleton 10 tabel dan data contoh, OpenAPI health, Postman, CI |
 | Antarmuka web CBT | `cbt-frontend` (repo ini) | Demo alur peserta dan instruktur | Alur utama lengkap untuk demonstrasi dengan mock adapter; belum mencakup hasil, autentikasi nyata, atau integrasi LMS |
 | Backend LMS | `lms-backend` | Pemilik data tugas/peserta/nilai CBT lama | **Tidak diubah**; memakai `link_cbt`, `token_cbt`, `nilai_cbt` |
 | Frontend LMS | `lms-frontend` | Konsumen alur CBT lama | **Tidak diubah**; `TugasModal`, `DetailProgressModal`, `getLaunchUrl` |
@@ -70,11 +70,11 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Laravel 13 / PHP 8.3 / Docker / SQLite | Selesai | `Dockerfile`, `composer.json`, `scripts/verify-local.sh` |
 | `GET /api/health` | Selesai | `routes/api.php` |
 | Format response seragam + global exception handler | Selesai | `app/Traits/ApiResponse.php`, `bootstrap/app.php`, `tests/Feature/ApiResponseFormatTest.php` |
-| ERD konseptual 10 entitas (PRD Bab 9) | Selesai (ERD + skema fisik skeleton) | `../cbt-api/docs/erd-konseptual.md` §4 (di workspace) |
+| ERD konseptual 10 entitas (PRD Bab 9) | Selesai (ERD + skema fisik skeleton) | `../../cbt-api/docs/erd-konseptual.md` §4 (workspace) |
 | OpenAPI untuk endpoint yang ada | Selesai (health only) | `docs/openapi.yaml` |
 | Koleksi Postman | Selesai (health only) | `docs/postman/CBT-API.postman_collection.json` |
 | CI + verifikasi lokal | Selesai | `.github/workflows/ci.yml` |
-| Migrasi tabel CBT | Selesai sebagai *schema skeleton* — tanpa kebijakan Q01–Q12 | `../cbt-api/database/migrations/2026_11_28_000001_create_cbt_schema_skeleton.php`, `../cbt-api/tests/Feature/CbtSchemaSkeletonTest.php` |
+| Migrasi tabel CBT | Selesai sebagai *schema skeleton* — tanpa kebijakan Q01–Q12 | `../../cbt-api/database/migrations/2026_11_28_000001_create_cbt_schema_skeleton.php`, `../../cbt-api/tests/Feature/CbtSchemaSkeletonTest.php` (workspace) |
 | Endpoint bisnis (ujian, soal, attempt, jawaban, nilai, hasil, proctor) | **Belum** | Hanya rancangan PRD Bab 7 |
 | Autentikasi/otorisasi CBT | **Belum** | Menunggu Q12 |
 
