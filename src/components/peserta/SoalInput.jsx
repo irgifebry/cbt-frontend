@@ -46,7 +46,11 @@ export default function SoalInput({ soal, jawaban, onChange }) {
       </p>
 
       {tipe === 'pilihan_tunggal' && (
-        <div className="flex flex-col gap-2">
+        <div
+          role="radiogroup"
+          aria-label={`Pilihan jawaban soal ${soal?.nomor}`}
+          className="flex flex-col gap-2"
+        >
           {opsi.map((item) => (
             <label
               key={item.id}
@@ -74,7 +78,12 @@ export default function SoalInput({ soal, jawaban, onChange }) {
       )}
 
       {tipe === 'pilihan_ganda' && (
-        <div className="flex flex-col gap-2">
+        <div
+          role="group"
+          aria-label={`Pilihan jawaban soal ${soal?.nomor}`}
+          aria-describedby={`bantuan-${soal?.id}`}
+          className="flex flex-col gap-2"
+        >
           {opsi.map((item) => (
             <label
               key={item.id}
@@ -93,7 +102,7 @@ export default function SoalInput({ soal, jawaban, onChange }) {
               </span>
             </label>
           ))}
-          <p className="text-[12px] text-gray-400 mt-1">
+          <p id={`bantuan-${soal?.id}`} className="text-[12px] text-gray-400 mt-1">
             Pilih satu atau lebih jawaban.
           </p>
         </div>
@@ -101,6 +110,7 @@ export default function SoalInput({ soal, jawaban, onChange }) {
 
       {tipe === 'esai' && (
         <textarea
+          aria-label={`Jawaban esai soal ${soal?.nomor}`}
           value={typeof jawaban === 'string' ? jawaban : ''}
           onChange={(event) => onChange(event.target.value)}
           rows={6}
@@ -113,6 +123,7 @@ export default function SoalInput({ soal, jawaban, onChange }) {
         <div className="flex flex-col gap-2">
           <input
             type="file"
+            aria-label={`Berkas jawaban soal ${soal?.nomor}`}
             onChange={(event) => onChange(event.target.files?.[0] ?? null)}
             className="text-[13px] text-[#1E293B] file:mr-3 file:px-4 file:py-2 file:rounded-lg file:border-0 file:bg-[#167A61] file:text-white file:cursor-pointer"
           />
