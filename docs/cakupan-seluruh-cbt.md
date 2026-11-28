@@ -70,11 +70,11 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Laravel 13 / PHP 8.3 / Docker / SQLite | Selesai | `Dockerfile`, `composer.json`, `scripts/verify-local.sh` |
 | `GET /api/health` | Selesai | `routes/api.php` |
 | Format response seragam + global exception handler | Selesai | `app/Traits/ApiResponse.php`, `bootstrap/app.php`, `tests/Feature/ApiResponseFormatTest.php` |
-| ERD konseptual 10 entitas (PRD Bab 9) | Selesai (pra-migrasi) | `docs/erd-konseptual.md` |
+| ERD konseptual 10 entitas (PRD Bab 9) | Selesai (ERD + skema fisik skeleton) | `../cbt-api/docs/erd-konseptual.md` §4 (di workspace) |
 | OpenAPI untuk endpoint yang ada | Selesai (health only) | `docs/openapi.yaml` |
 | Koleksi Postman | Selesai (health only) | `docs/postman/CBT-API.postman_collection.json` |
 | CI + verifikasi lokal | Selesai | `.github/workflows/ci.yml` |
-| Migrasi tabel CBT | **Belum** — menunggu aturan bisnis dikunci | Lihat bagian 6 |
+| Migrasi tabel CBT | Selesai sebagai *schema skeleton* — tanpa kebijakan Q01–Q12 | `../cbt-api/database/migrations/2026_11_28_000001_create_cbt_schema_skeleton.php`, `../cbt-api/tests/Feature/CbtSchemaSkeletonTest.php` |
 | Endpoint bisnis (ujian, soal, attempt, jawaban, nilai, hasil, proctor) | **Belum** | Hanya rancangan PRD Bab 7 |
 | Autentikasi/otorisasi CBT | **Belum** | Menunggu Q12 |
 
@@ -144,7 +144,9 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 
 ## 6. Keputusan yang masih menunggu pembimbing
 
-Sumber: `docs/cbt-requirements-matrix.md`, `docs/pertanyaan-konfirmasi-dosen-pembimbing-cbt.md`, `CBT-API.md` Bab 17. [Lembar konsultasi satu halaman](lembar-konsultasi-cbt.md) merangkum ke-12 butir beserta opsi usulan dan ruang jawaban. Usulan dalam catatan konsultasi **bukan** keputusan dosen.
+Sumber: `docs/cbt-requirements-matrix.md`, `docs/pertanyaan-konfirmasi-dosen-pembimbing-cbt.md`, `CBT-API.md` Bab 17. [Lembar konsultasi satu halaman](lembar-konsultasi-cbt.md) merangkum ke-12 butir beserta opsi usulan dan ruang jawaban.
+
+Skema fisik `cbt-api` sudah dibuat sebagai *skeleton*: kolom yang berkaitan dengan butir di bawah dibuat `nullable` tanpa nilai bawaan dan tanpa `check` constraint, sehingga tabel tidak mengunci jawaban dosen. Rencana implementasi aturan tetap menunggu konfirmasi. Usulan dalam catatan konsultasi **bukan** keputusan dosen.
 
 | ID | Pertanyaan | Mem-blok |
 |---|---|---|
@@ -193,7 +195,7 @@ Sumber: `docs/cbt-requirements-matrix.md`, `docs/pertanyaan-konfirmasi-dosen-pem
 
 PRD menargetkan: endpoint berfungsi, database dan relasi konsisten, proses bisnis tervalidasi, pengujian API, dokumentasi API, dan bukti integrasi dengan backend Ucademy.
 
-**Realisasi saat ini:** dokumentasi dan pengujian fondasi terpenuhi; endpoint bisnis, migrasi, dan integrasi LMS **belum** terpenuhi. UI demo tidak dapat dihitung sebagai pengganti kriteria tersebut.
+**Realisasi saat ini:** dokumentasi, pengujian fondasi, dan skema fisik skeleton terpenuhi; endpoint bisnis, autentikasi, dan integrasi LMS **belum** terpenuhi. UI demo tidak dapat dihitung sebagai pengganti kriteria tersebut.
 
 ---
 
@@ -205,6 +207,7 @@ PRD menargetkan: endpoint berfungsi, database dan relasi konsisten, proses bisni
 | UI menggantikan alur `link_cbt`/`token_cbt`/`nilai_cbt` | **Tidak** — alur lama tetap menjadi jalur yang saat ini didukung LMS |
 | Semua fitur PRD sudah dibuat | **Tidak** — baru fondasi API + demo UI |
 | Q01–Q12 sudah diputuskan dosen | **Tidak** — belum ada keputusan dosen untuk ke-12 butir; sebagian arahan umum sudah ada (bagian 6) |
+| Skema fisik mengunci aturan Q01–Q12 | **Tidak** — kolom terkait nullable tanpa default; diuji oleh `CbtSchemaSkeletonTest` |
 | Web sudah dikonfirmasi pembimbing | **Tidak** — web-first adalah keputusan penulis; Q05 masih menunggu konfirmasi |
 
 ---
