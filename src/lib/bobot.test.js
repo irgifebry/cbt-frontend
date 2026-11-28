@@ -44,3 +44,28 @@ test('bobot berupa teks ditolak', () => {
     errors: ['Bobot harus berupa angka'],
   });
 });
+
+test('daftar soal kosong dianggap valid', () => {
+  assert.deepEqual(validasiBobot([]), { valid: true, errors: [] });
+});
+
+test('bobot NaN ditolak', () => {
+  assert.deepEqual(validasiBobot([{ bobot: NaN }]), {
+    valid: false,
+    errors: ['Bobot harus berupa angka'],
+  });
+});
+
+test('item soal null ditolak', () => {
+  assert.deepEqual(validasiBobot([null]), {
+    valid: false,
+    errors: ['Bobot harus berupa angka'],
+  });
+});
+
+test('total desimal di atas 100 ditolak', () => {
+  assert.deepEqual(validasiBobot([{ bobot: 60.25 }, { bobot: 40.3 }]), {
+    valid: false,
+    errors: ['Total bobot tidak boleh lebih dari 100'],
+  });
+});

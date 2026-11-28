@@ -52,3 +52,52 @@ test('flush menunggu pengiriman berjalan dan menolak bila ada yang gagal', async
   );
   assert.equal(selesaiDitunggu, true);
 });
+
+test('flush membatalkan timer yang tertunda', async () => {
+  const menunggu = new Map();
+  const timer = setTimeout(() => {}, 800);
+  menunggu.set('soal-1', { timer, payload: { idSoal: 'soal-1' } });
+  const dibatalkan = [];
+
+  await flushAntrean({
+    menunggu,
+    aktif: new Set(),
+    kirim: async () => true,
+    hapusTimer: (t) => dibatalkan.push(t),
+  });
+
+  assert.deepEqual(dibatalkan, [timer]);
+  clearTimeout(timer);
+});
+
+test('flush dengan antrean dan pengiriman kosong tidak memanggil kirim', async () => {
+  let dipanggil = false;
+  await flushAntrean({
+    menunggu: new Map(),
+    aktif: new Set(),
+    kirim: async () => { dipanggil = true; return true; },
+  });
+  assert.equal(dipanggil, false);
+});
+
+test('flush mengirim semua payload yang tertunda', async () => {
+  const menunggu = new Map([
+    ['soal-1', { timer: null, payload: { idSoal: 'soal-1' } }],
+    ['soal-2', { timer: null, payload: { idSoal: 'soal-2' } }],
+  ]);
+  const terkirim = [];
+  await flushAntrean({
+    menunggu,
+    aktif: new Set(),
+    kirim: async (payload) => { terkirim.push(payload.idSoal); return true; },
+  });
+  assert.deepEqual(terkirim, ['soal-1', 'soal-2']);
+});
+
+test('SAVE_START mempertahankan waktu tersimpan sebelumnya', () => {
+  const waktu = '2026-11-28T10:00:00.000Z';
+  const tersimpan = autosaveReducer(createAutosaveState(), { type: 'SAVE_OK', waktu });
+  const menyimpan = autosaveReducer(tersimpan, { type: 'SAVE_START' });
+  assert.equal(menyimpan.status, 'menyimpan');
+  assert.equal(menyimpan.waktuTersimpan, waktu);
+});

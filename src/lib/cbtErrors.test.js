@@ -15,3 +15,14 @@ test('error jaringan memakai pesan default', () => {
     status: null,
   });
 });
+
+test('pesan error bukan string memakai pesan default', () => {
+  assert.deepEqual(
+    mapCbtError({ response: { status: 422, data: { message: { detail: 'salah' } } } }),
+    { message: 'Gagal terhubung ke layanan CBT', status: 422 }
+  );
+});
+
+test('error tanpa response tidak mengarang status', () => {
+  assert.deepEqual(mapCbtError({}), { message: 'Gagal terhubung ke layanan CBT', status: null });
+});

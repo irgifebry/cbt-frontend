@@ -20,3 +20,11 @@ test('label tampilan peristiwa berbahasa Indonesia', () => {
   assert.equal(labelPeristiwaProctor('window_blur'), 'Fokus jendela hilang');
   assert.equal(labelPeristiwaProctor('tipe_baru'), 'tipe_baru');
 });
+
+test('input null tidak menghasilkan peristiwa', () => {
+  assert.equal(toProctorEvent(null), null);
+});
+
+test('label untuk tipe tidak terdefinisi mengembalikan nilai aslinya', () => {
+  assert.equal(labelPeristiwaProctor(undefined), undefined);
+});
