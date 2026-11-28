@@ -482,3 +482,31 @@ try {
   await browser.close();
 }
 ```
+
+
+---
+
+## Verifikasi 28 November 2026 — hardening tanpa keputusan baru
+
+Lingkup: 12 uji regresi edge case baru, atribut ARIA pada input jawaban, dan sinkronisasi bukti. Tidak ada perubahan perilaku yang bergantung pada Q01–Q12.
+
+### Perintah dan hasil
+
+```bash
+cd cbt-frontend
+node --test src/lib/*.test.js src/services/cbt/*.test.js
+npx eslint src/components/peserta/SoalInput.jsx src/lib/*.test.js
+npm run build
+```
+
+- `node --test`: **37 test lulus, 0 gagal** (sebelumnya 25).
+- `npx eslint`: tanpa keluaran (kode keluar 0).
+- `npm run build`: berhasil; peringatan ukuran chunk > 500 kB sudah ada sebelumnya dan tidak terkait perubahan ini.
+
+### Uji browser
+
+1. Buka `http://127.0.0.1:5173/cbt/attempt/attempt-1` dengan `agent-browser`, viewport 1440×900.
+2. Klik **Mulai**； evaluasi DOM menunjukkan `1` grup ber-`role` (`radiogroup`) dan atribut `aria-label` `["Navigasi soal", "Pilihan jawaban soal 1"]`.
+3. Screenshot: [`screenshots/28-11-2026-pengerjaan-a11y.png`](screenshots/28-11-2026-pengerjaan-a11y.png). Tampilan tidak berubah secara visual dibanding bukti 26 November.
+
+Dengan demikian label aksesibilitas terpasang pada grup pilihan, textarea esai, dan input berkas tanpa menambah aturan penilaian, proctoring, unggahan, attempt, atau hasil.

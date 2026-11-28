@@ -94,7 +94,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 | Halaman hasil / publikasi hasil | **Sengaja tidak diaktifkan** | Menunggu Q04 |
 | Client HTTP ke `cbt-api` | Disiapkan | `src/config/cbtApi.js`; belum dipakai karena endpoint belum ada |
 | Autentikasi/enrollment LMS | **Belum** | Menunggu Q12 |
-| Verifikasi | Selesai | 25/25 test murni, build, lint ter-scoped, E2E Orca CLI + agent-browser |
+| Verifikasi | Selesai | 37/37 test murni (12 edge case ditambah 28 Nov), build, lint ter-scoped, E2E Orca CLI + agent-browser |
 
 ### 3.3 Integrasi dengan LMS yang sudah ada
 

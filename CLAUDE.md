@@ -41,7 +41,7 @@ npx eslint src/lib src/services/cbt src/pages/peserta src/pages/dosen/cbt src/co
 
 ## Verifikasi terakhir
 
-25/25 test murni lulus, build lulus, dan uji end-to-end memakai Orca CLI serta `agent-browser` berhasil. Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
+37/37 test murni lulus, build lulus, dan uji end-to-end memakai Orca CLI serta `agent-browser` berhasil. Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
 
 ## Kewajiban pembaruan menyeluruh
 

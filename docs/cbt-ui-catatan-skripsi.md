@@ -188,7 +188,7 @@ Tiga temuan di atas diperbaiki tanpa menunggu keputusan pembimbing karena semuan
 
 Error `Gagal mengambil data profil` **tidak** diubah: berasal dari layout LMS lama dan hanya muncul karena backend LMS tidak dijalankan saat pengujian. Memperbaikinya berarti mengubah `lms-backend`/kode LMS, yang berada di luar batas skripsi CBT mandiri.
 
-Verifikasi setelah perbaikan: 25/25 uji murni lulus, `npm run build` lulus, dan uji browser membuktikan jawaban tetap terbaca setelah reload, ketiga label proctor tampil, serta attempt berubah menjadi "Selesai" setelah dikumpulkan.
+Verifikasi setelah perbaikan: 25/25 uji murni lulus, `npm run build` lulus, dan uji browser membuktikan jawaban tetap terbaca setelah reload, ketiga label proctor tampil, serta attempt berubah menjadi "Selesai" setelah dikumpulkan. Verifikasi lanjutan 28 November menambah 12 uji edge case menjadi **37/37 lulus**, menambahkan label aksesibilitas non-visual pada input jawaban, dan mengambil screenshot terbaru; rincian ada di [bukti verifikasi](bukti-verifikasi-cbt-ui.md).
 
 ### Catatan pengambilan bukti
 
@@ -249,3 +249,4 @@ Tampilan berikut diambil dari uji menyeluruh dengan `agent-browser` (browser ter
 | Editor soal | ![Editor soal](screenshots/07-editor-soal.png) |
 | Riwayat proktor | ![Riwayat proktor](screenshots/09-riwayat-proktor.png) |
 | Penilaian manual | ![Penilaian manual](screenshots/10-penilaian.png) |
+| Pengerjaan dengan label aksesibilitas (28 November 2026) | ![Pengerjaan dan ARIA](screenshots/28-11-2026-pengerjaan-a11y.png) |
