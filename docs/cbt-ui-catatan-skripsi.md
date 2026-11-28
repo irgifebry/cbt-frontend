@@ -228,6 +228,7 @@ npm run dev -- --host 127.0.0.1
 - [PRD API CBT](../CBT-API.md) — kebutuhan dan kontrak API.
 - [Matriks kebutuhan CBT](cbt-requirements-matrix.md) — status arahan pembimbing dan Q01–Q12.
 - [Catatan dan pertanyaan konsultasi](pertanyaan-konfirmasi-dosen-pembimbing-cbt.md) — sumber arahan, termasuk No. 9.
+- [Lembar konsultasi satu halaman](lembar-konsultasi-cbt.md) — 12 butir terbuka dengan ruang jawaban dan tanggal.
 - [Desain antarmuka web CBT](superpowers/specs/2026-11-25-cbt-web-ui-design.md) — keputusan arsitektur dan usulan penulis.
 - [Rencana implementasi peserta](superpowers/plans/2026-11-25-cbt-web-ui-peserta.md) dan [rencana implementasi instruktur](superpowers/plans/2026-11-25-cbt-web-ui-instruktur.md).
 - [README frontend](../README.md) — petunjuk pengembangan umum.

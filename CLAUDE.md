@@ -12,7 +12,7 @@ Panduan untuk Claude Code saat bekerja di repositori `cbt-frontend` (antarmuka w
 
 ## Aturan kerja
 
-1. Sebelum mengubah cakupan atau arsitektur, baca `docs/cakupan-seluruh-cbt.md`. Untuk ringkasan skripsi baca `docs/cbt-ui-catatan-skripsi.md`; untuk status keputusan baca `docs/cbt-requirements-matrix.md`.
+1. Sebelum mengubah cakupan atau arsitektur, baca `docs/cakupan-seluruh-cbt.md`; untuk menyiapkan pertemuan dengan pembimbing pakai `docs/lembar-konsultasi-cbt.md`. Untuk ringkasan skripsi baca `docs/cbt-ui-catatan-skripsi.md`; untuk status keputusan baca `docs/cbt-requirements-matrix.md`.
 2. Setiap perubahan kode harus disertai pembaruan dokumentasi yang sama (CBT-R12): README, OpenAPI/ERD bila relevan, contoh request/response, dan langkah verifikasi.
 3. Jangan menambah dependency npm tanpa kebutuhan nyata. Test memakai `node --test` bawaan Node.
 4. `npm run lint` penuh gagal karena ~103 error lama di luar CBT; gate yang benar adalah `npx eslint <berkas yang diubah>` + `npm run build`.

@@ -4,7 +4,7 @@ Frontend web untuk layanan CBT mandiri U-Cademy. Fase ini difokuskan pada **peng
 
 - Layanan API: [`cbt-api`](https://github.com/irgifebry/cbt-api)
 - Catatan untuk skripsi: [Catatan skripsi — antarmuka web CBT](docs/cbt-ui-catatan-skripsi.md)
-- Kebutuhan dan batas: [`CBT-API.md`](CBT-API.md) · [matriks kebutuhan](docs/cbt-requirements-matrix.md) · [catatan konsultasi](docs/pertanyaan-konfirmasi-dosen-pembimbing-cbt.md)
+- Kebutuhan dan batas: [`CBT-API.md`](CBT-API.md) · [matriks kebutuhan](docs/cbt-requirements-matrix.md) · [catatan konsultasi](docs/pertanyaan-konfirmasi-dosen-pembimbing-cbt.md) · [lembar konsultasi 1 halaman](docs/lembar-konsultasi-cbt.md)
 
 ## Diagram cakupan
 

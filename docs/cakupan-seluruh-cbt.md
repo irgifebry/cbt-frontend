@@ -144,7 +144,7 @@ UI website/mobile CBT, sistem autentikasi baru, pengembangan LMS keseluruhan, we
 
 ## 6. Keputusan yang masih menunggu pembimbing
 
-Sumber: `docs/cbt-requirements-matrix.md`, `docs/pertanyaan-konfirmasi-dosen-pembimbing-cbt.md`, `CBT-API.md` Bab 17. Usulan dalam catatan konsultasi **bukan** keputusan dosen.
+Sumber: `docs/cbt-requirements-matrix.md`, `docs/pertanyaan-konfirmasi-dosen-pembimbing-cbt.md`, `CBT-API.md` Bab 17. [Lembar konsultasi satu halaman](lembar-konsultasi-cbt.md) merangkum ke-12 butir beserta opsi usulan dan ruang jawaban. Usulan dalam catatan konsultasi **bukan** keputusan dosen.
 
 | ID | Pertanyaan | Mem-blok |
 |---|---|---|
