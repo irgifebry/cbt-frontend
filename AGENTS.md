@@ -43,7 +43,7 @@ Jika `npm ci` gagal karena izin cache npm (`EACCES`), pakai ulang `node_modules`
 
 ## Verifikasi terakhir
 
-37/37 test murni lulus, build lulus, dan uji end-to-end memakai Orca CLI serta `agent-browser` berhasil. Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
+37/37 test murni lulus, build lulus, uji end-to-end Orca CLI/`agent-browser` berhasil, dan 14 skenario browser 28 Nov: 13 lulus, 1 temuan penyimpanan jawaban unggah (lihat `docs/e2e-browser-28-11-2026.md`). Bukti: `docs/bukti-verifikasi-cbt-ui.md` dan `docs/screenshots/`.
 
 ## Kewajiban pembaruan menyeluruh
 

@@ -188,7 +188,7 @@ Tiga temuan di atas diperbaiki tanpa menunggu keputusan pembimbing karena semuan
 
 Error `Gagal mengambil data profil` **tidak** diubah: berasal dari layout LMS lama dan hanya muncul karena backend LMS tidak dijalankan saat pengujian. Memperbaikinya berarti mengubah `lms-backend`/kode LMS, yang berada di luar batas skripsi CBT mandiri.
 
-Verifikasi setelah perbaikan: 25/25 uji murni lulus, `npm run build` lulus, dan uji browser membuktikan jawaban tetap terbaca setelah reload, ketiga label proctor tampil, serta attempt berubah menjadi "Selesai" setelah dikumpulkan. Verifikasi lanjutan 28 November menambah 12 uji edge case menjadi **37/37 lulus**, menambahkan label aksesibilitas non-visual pada input jawaban, dan mengambil screenshot terbaru; rincian ada di [bukti verifikasi](bukti-verifikasi-cbt-ui.md).
+Verifikasi setelah perbaikan: 25/25 uji murni lulus, `npm run build` lulus, dan uji browser membuktikan jawaban tetap terbaca setelah reload, ketiga label proctor tampil, serta attempt berubah menjadi "Selesai" setelah dikumpulkan. Verifikasi lanjutan 28 November menambah 12 uji edge case menjadi **37/37 lulus**, menambahkan label aksesibilitas non-visual pada input jawaban, dan mengambil screenshot terbaru; rincian ada di [bukti verifikasi](bukti-verifikasi-cbt-ui.md). Uji E2E browser lanjutan pada hari yang sama: 13 dari 14 skenario lulus, dengan satu temuan pada penyimpanan jawaban unggah; rincian ada di [laporan E2E](e2e-browser-28-11-2026.md).
 
 ### Catatan pengambilan bukti
 
@@ -233,6 +233,7 @@ npm run dev -- --host 127.0.0.1
 - [Rencana implementasi peserta](superpowers/plans/2026-11-25-cbt-web-ui-peserta.md) dan [rencana implementasi instruktur](superpowers/plans/2026-11-25-cbt-web-ui-instruktur.md).
 - [README frontend](../README.md) — petunjuk pengembangan umum.
 - [Bukti verifikasi](bukti-verifikasi-cbt-ui.md) — laporan lengkap uji, build, dan skenario browser.
+- [Uji E2E browser 28 November](e2e-browser-28-11-2026.md) — 14 skenario peserta dan instruktur beserta temuan jawaban unggah.
 
 ## 8. Lampiran tampilan
 
